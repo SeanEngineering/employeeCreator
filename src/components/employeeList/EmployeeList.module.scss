@@ -1,0 +1,49 @@
+@use '../../styles/mixins';
+
+.descriptor{
+    @include mixins.flexing(row, space-between, center);
+    padding: 30px;
+    button{
+        color: white;
+        background-color: navy;
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+}
+
+.list{
+    width: 100%;
+}
+
+.card{
+    width: 60vw;
+    @include mixins.flexing(row, space-between, center);
+    border-top: 1px solid gray;
+
+    &:last-child{
+        border-bottom: 1px solid gray;
+    }
+
+    &__details{
+        text-align: left;
+    }
+    &__options{
+        @include mixins.flexing(row, center, center);
+        margin-bottom: auto;
+        gap: 6px;
+        font-weight: 600;
+        text-decoration: underline;
+        text-decoration-color: gray;
+        :first-child{
+            padding-right: 6px;
+            border-right: 1px solid gray;
+        }
+        p{
+            &:hover{
+                font-weight: 700;
+                cursor: pointer;
+            }
+        }
+    }
+
+}
