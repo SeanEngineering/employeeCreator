@@ -78,7 +78,7 @@ public class EmployeeService {
 		return this.repository.findById(id);
 	}
 	
-	public Employee deleteEmployee(long id){I
+	public Employee deleteEmployee(long id){
 		Optional<Employee> employeeOptional = getEmployeeById(id);
 		if (employeeOptional.isPresent()) {
 			this.repository.delete(employeeOptional.get());
