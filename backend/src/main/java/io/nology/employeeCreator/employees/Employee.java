@@ -1,6 +1,6 @@
 package io.nology.employeeCreator.employees;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import jakarta.annotation.Nullable;
 import jakarta.persistence.Column;
@@ -80,19 +80,19 @@ public class Employee {
 	}
 
 
-	public Date getStartDate() {
+	public LocalDate getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
 
-	public Date getFinishDate() {
+	public LocalDate getFinishDate() {
 		return finishDate;
 	}
 
-	public void setFinishDate(Date finishDate) {
+	public void setFinishDate(LocalDate finishDate) {
 		this.finishDate = finishDate;
 	}
 
@@ -145,11 +145,11 @@ public class Employee {
 	 boolean permanent;
 	
 	@Column
-	 Date startDate;
+	 LocalDate startDate;
 	
 	@Column
 	@Nullable
-	 Date finishDate;
+	 LocalDate finishDate;
 	
 	@Column
 	 boolean fullTime;
@@ -158,8 +158,8 @@ public class Employee {
 	 Short hoursPerWeek;
 	
 	public Employee(String firstName, String lastName, String middleName, String email,
-			String phone, String address, boolean permanent, Date startDate,
-			Date finishDate, boolean fullTime, Short hoursPerWeek) {
+			String phone, String address, boolean permanent, LocalDate startDate,
+			LocalDate finishDate, boolean fullTime, Short hoursPerWeek) {
 		this.firstName = firstName;
 		this.lastName =lastName;
 		this.middleName = lastName;

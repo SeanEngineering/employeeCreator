@@ -1,10 +1,12 @@
 package io.nology.employeeCreator.employees;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173/")
 @RequestMapping("/employees")
 public class EmployeeController {
 	
@@ -34,6 +37,12 @@ public class EmployeeController {
 	ResponseEntity<Employee> postEmployee(@Valid @RequestBody EditEmployeeDTO data) throws Exception{
 		Employee employee = this.service.createEmployee(data);
 		return new ResponseEntity<Employee>(employee, HttpStatus.ACCEPTED);
+	}
+	
+	@GetMapping("/{id}")
+	ResponseEntity<Employee> getEmployee(@PathVariable long id){
+		Optional<Employee> employee = this.service.getEmployeeById(id);
+		return new ResponseEntity<Employee>(employee.get(), HttpStatus.OK);
 	}
 	
 	@PatchMapping("/{id}") 

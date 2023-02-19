@@ -1,5 +1,6 @@
 package io.nology.employeeCreator.employees;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import jakarta.annotation.Nullable;
@@ -57,13 +58,13 @@ public class EditEmployeeDTO {
 
 
 
-	public Date getStartDate() {
+	public LocalDate getStartDate() {
 		return startDate;
 	}
 
 
 
-	public Date getFinishDate() {
+	public LocalDate getFinishDate() {
 		return finishDate;
 	}
 
@@ -82,8 +83,8 @@ public class EditEmployeeDTO {
 	String phone;
 	String address;
 	Boolean permanent;
-	Date startDate;
-	Date finishDate;
+	LocalDate startDate;
+	LocalDate finishDate;
 	Boolean fullTime;
 	Short hoursPerWeek;
 	
@@ -91,7 +92,7 @@ public class EditEmployeeDTO {
 	
 	public EditEmployeeDTO(String firstName, String lastName, String middleName,
 			String email, String phone, String address, Boolean permanent,
-			Date startDate, Date finishDate, Boolean fullTime, Short hoursPerWeek) {
+			LocalDate startDate, LocalDate finishDate, Boolean fullTime, Short hoursPerWeek) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.middleName = middleName;

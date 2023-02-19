@@ -1,5 +1,6 @@
 package io.nology.employeeCreator.employees;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -64,7 +65,8 @@ public class EmployeeService {
 		}
 		if (!data.isPermanent().equals(null)) updatedEmployee.setPermanent(data.isPermanent());
 		if (!data.isFullTime().equals(null)) updatedEmployee.setFullTime(data.isFullTime());
-		if (!data.hoursPerWeek.equals(null)) updatedEmployee.setHoursPerWeek(data.getHoursPerWeek());
+		if (!data.getHoursPerWeek().equals(null)) updatedEmployee.setHoursPerWeek(data.getHoursPerWeek());
+		updatedEmployee.setFinishDate(data.getFinishDate());
 		
 		
 		
@@ -76,7 +78,7 @@ public class EmployeeService {
 		return this.repository.findById(id);
 	}
 	
-	public Employee deleteEmployee(long id){
+	public Employee deleteEmployee(long id){I
 		Optional<Employee> employeeOptional = getEmployeeById(id);
 		if (employeeOptional.isPresent()) {
 			this.repository.delete(employeeOptional.get());
@@ -90,8 +92,8 @@ public class EmployeeService {
 	}
 	
 
-	private Boolean checkDate(Date startDate, @Nullable Date endDate) {
-		if (endDate == null || endDate.before(startDate)) {
+	private Boolean checkDate(LocalDate startDate, @Nullable LocalDate endDate) {
+		if (endDate == null || endDate.isBefore(startDate)) {
 			return true;
 		}
 		return false;
