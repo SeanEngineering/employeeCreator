@@ -22,6 +22,7 @@ const EmployeeList = () => {
     })
 
     if(employeeList.isLoading) return <h1>Loading</h1>
+    if(employeeList.error) return <h1>Could not retrieve data</h1>
 
     const changeNavigate = (e: Event, id: string) => {
         e.preventDefault;

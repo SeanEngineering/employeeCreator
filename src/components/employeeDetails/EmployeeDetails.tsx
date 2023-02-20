@@ -21,6 +21,7 @@ const EmployeeDetails = () => {
         finishMonth: 0,
         finishDay: 0
     });
+ 
     const [formData, setFormData] = useState({
       firstName: "",
       middleName: "",
@@ -29,11 +30,13 @@ const EmployeeDetails = () => {
       phone:"",
       address: "",
       permanent: true,
-      startDate: "",
-      finishDate: "",
-      hoursPerWeek: 0,
+      startDate: new Date().toISOString().slice(0,10) ,
+      finishDate: new Date().toISOString().slice(0,10),
+      hoursPerWeek: 40,
       fullTime: true,
     });
+    [startFinish.startYear, startFinish.startMonth, startFinish.startDay] = processDate(formData.startDate);
+    [startFinish.finishYear, startFinish.finishMonth, startFinish.finishDay] = processDate(formData.finishDate);
     
     const handleInputChange = (event) => {
       const { name, value } = event.target;
@@ -228,7 +231,7 @@ const EmployeeDetails = () => {
                     <div className={style.main__form__details}>
                         <h5>Is this on a full-time or part-time basis?</h5>
                         <div>
-                            <input type="radio" name='fullPart' id='fullTime'/>
+                            <input type="radio" name='fullPart' id='fullTime' checked={true}/>
                             <label htmlFor="fulltime">Full-time</label>
                         </div>
                         <div>
