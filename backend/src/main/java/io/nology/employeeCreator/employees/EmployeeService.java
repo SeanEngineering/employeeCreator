@@ -20,7 +20,7 @@ public class EmployeeService {
 	private EmployeeRepository repository;
 	
 	public Employee createEmployee(EditEmployeeDTO data) throws Exception{
-		if (checkDate(data.getStartDate(), data.getFinishDate())) {
+		if (!checkDate(data.getStartDate(), data.getFinishDate())) {
 			throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Start date is after finish date");
 		}
 		Employee newEmployee = new Employee(data.getFirstName(), data.getLastName(), data.getMiddleName(), data.getEmail(), data.getPhone(), data.getAddress()
@@ -43,7 +43,6 @@ public class EmployeeService {
 		
 		if (!data.getMiddleName().isEmpty()) updatedEmployee.setMiddleName(data.getMiddleName());
 
-		
 		if (!data.getEmail().isEmpty()) updatedEmployee.setEmail(data.getEmail());
 		
 		if (!data.getPhone().isEmpty()) updatedEmployee.setPhone(data.getPhone());
@@ -51,15 +50,15 @@ public class EmployeeService {
 		if (!data.getAddress().isEmpty()) updatedEmployee.setAddress(data.getAddress());
 		
 		if (data.getStartDate() != null && data.getFinishDate() != null) {
-			if (checkDate(data.getStartDate(), data.getFinishDate())) {
+			if (!checkDate(data.getStartDate(), data.getFinishDate())) {
 				throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Start date is after finish date");
 			}
 		} else if (data.getFinishDate() != null && checkDate(updatedEmployee.getStartDate(), data.getFinishDate())) {
-			if (checkDate(updatedEmployee.getStartDate(), data.getFinishDate())) {
+			if (!checkDate(updatedEmployee.getStartDate(), data.getFinishDate())) {
 				throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Start date is after finish date");
 			}
 		} else if (data.getStartDate() != null) {
-			if(checkDate(data.getStartDate(), updatedEmployee.getFinishDate())) {
+			if(!checkDate(data.getStartDate(), updatedEmployee.getFinishDate())) {
 				throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Start date is after finish date");
 			}
 		}
@@ -93,7 +92,7 @@ public class EmployeeService {
 	
 
 	private Boolean checkDate(LocalDate startDate, @Nullable LocalDate endDate) {
-		if (endDate == null || endDate.isBefore(startDate)) {
+		if (endDate == null || endDate.isAfter(startDate)) {
 			return true;
 		}
 		return false;

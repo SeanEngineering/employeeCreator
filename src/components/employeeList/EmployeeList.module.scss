@@ -1,8 +1,14 @@
 @use '../../styles/mixins';
 
+.main{
+    min-width: 800px;
+    // background-color: red;
+}
+
 .descriptor{
     @include mixins.flexing(row, space-between, center);
-    padding: 30px;
+    width: 100%;
+    padding-bottom: 30px;
     button{
         color: white;
         background-color: navy;
@@ -16,7 +22,7 @@
 }
 
 .card{
-    width: 60vw;
+    width: 100%;
     @include mixins.flexing(row, space-between, center);
     border-top: 1px solid gray;
 

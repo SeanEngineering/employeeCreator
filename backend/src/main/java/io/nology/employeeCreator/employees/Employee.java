@@ -159,10 +159,10 @@ public class Employee {
 	
 	public Employee(String firstName, String lastName, String middleName, String email,
 			String phone, String address, boolean permanent, LocalDate startDate,
-			LocalDate finishDate, boolean fullTime, Short hoursPerWeek) {
+			@Nullable LocalDate finishDate, boolean fullTime, Short hoursPerWeek) {
 		this.firstName = firstName;
 		this.lastName =lastName;
-		this.middleName = lastName;
+		this.middleName = middleName;
 		this.email = email;
 		this.phone = phone;
 		this.address = address;

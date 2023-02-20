@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 import jakarta.annotation.Nullable;
+import jakarta.validation.constraints.Pattern;
 
 public class EditEmployeeDTO {
 	String firstName;
@@ -77,7 +78,7 @@ public class EditEmployeeDTO {
 	}
 
 
-
+	
 	String middleName;
 	String email;
 	String phone;
@@ -90,7 +91,7 @@ public class EditEmployeeDTO {
 	
 	public EditEmployeeDTO() {}
 	
-	public EditEmployeeDTO(String firstName, String lastName, String middleName,
+	public EditEmployeeDTO(String firstName, String lastName, @Nullable String middleName,
 			String email, String phone, String address, Boolean permanent,
 			LocalDate startDate, LocalDate finishDate, Boolean fullTime, Short hoursPerWeek) {
 		this.firstName = firstName;

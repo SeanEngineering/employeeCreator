@@ -3,10 +3,11 @@ import { useParams, useNavigate } from 'react-router-dom';
 import style from './EmployeeDetails.module.scss';
 import axios, {AxiosResponse} from 'axios';
 import { processDate, recombineDate } from '../../service/EmployeeAPI';
+import { useQuery, useMutation } from '@tanstack/react-query';
 
 const EmployeeDetails = () => {
     const personal:Array<Array<string>> = [['First name', 'firstName'], ['Middle name (if applicable)', 'middleName'], ['Last name', 'lastName']];
-    const contact:Array<Array<string>> = [['Email address', 'email'], ['Mobile number', 'phone'], ['Residential address', 'address']];
+    const contact:Array<Array<string>> = [['Email address', 'email', 'email'], ['Mobile number', 'phone', 'tel'], ['Residential address', 'address', 'text']];
     const {id} = useParams();
     const navigate = useNavigate();
     const [data, setData] = useState<{ [key: string]: string }>({});
@@ -27,11 +28,11 @@ const EmployeeDetails = () => {
       email: "",
       phone:"",
       address: "",
-      permanent: false,
+      permanent: true,
       startDate: "",
       finishDate: "",
       hoursPerWeek: 0,
-      fullTime: false,
+      fullTime: true,
     });
     
     const handleInputChange = (event) => {
@@ -70,7 +71,7 @@ const EmployeeDetails = () => {
         
                 //Store key value pairs
               for (const word of Object.keys(formData)) {
-                if (word == 'finishDate' && response.data[word] == null){
+                if (word == 'finishDate' && !response.data[word]){
                     let today = new Date().toISOString().slice(0,10);
                     setOngoing(true);
                     formData[word] = today;
@@ -112,7 +113,7 @@ const EmployeeDetails = () => {
         ongoing ? formData.finishDate = null: null;
         console.log(formData);
         const json = JSON.stringify(formData);
-        if (id){
+        if (parseInt(id)){
             axios.patch(`http://localhost:8080/employees/${id}`,json, {
                 headers: {
                     'Content-Type': 'application/json'
@@ -125,7 +126,7 @@ const EmployeeDetails = () => {
                     'Content-Type': 'application/json'
                 }
             });
-            alert('Your submission has been succesful')
+            alert('You created an employee')
 
         }
 
@@ -152,18 +153,18 @@ const EmployeeDetails = () => {
                     let tag = item[1];
                     return (<div className={style.main__form__details__list}>
                         <label htmlFor={tag}>{item[0]}</label>
-                        <input type="text" name={tag} id={tag} value={formData[tag]} className={style.main__form__details__list__input} onChange={handleInputChange}/>
+                        <input type={item[2]} name={tag} id={tag} value={formData[tag]} className={style.main__form__details__list__input} onChange={handleInputChange}/>
                     </div>)
                 })}
                 </section>
                 <section className={style.main__form__details}>
                     <h3>Employee status</h3>
-                    <form action="">
+                    <div>
                         <input type="radio" name='permanent' id='permanent'/>
                         <label htmlFor="permanent">Permanent</label>
                         <input type="radio" name='permanent' id='contract'/>
                         <label htmlFor="contract">Contract</label>
-                    </form>
+                    </div>
                     <h4>Start date</h4> 
                     <div className={style.date}>
                         <div className={style.date__section}>
