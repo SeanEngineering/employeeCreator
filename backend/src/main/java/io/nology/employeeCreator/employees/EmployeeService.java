@@ -11,6 +11,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 
+import com.github.javafaker.Faker;
+
+import io.nology.employeeCreator.seeder.EmployeeBuilder;
+import io.nology.employeeCreator.seeder.EmployeeSeederDTO;
 import jakarta.annotation.Nullable;
 
 @Service
@@ -97,6 +101,26 @@ public class EmployeeService {
 		}
 		return false;
 		
+	}
+	
+	public void seedEmployee(EmployeeSeederDTO data) {
+		int number = data.getNumber();
+		Faker faker = new Faker();
+		EmployeeBuilder employeeBuilder = new EmployeeBuilder();
+		for  (int i = 0; i < number; i++) {
+			employeeBuilder.setFirstName(faker.name().firstName());
+			employeeBuilder.setMiddleName(faker.name().firstName());
+			employeeBuilder.setLastName(faker.name().lastName());
+			employeeBuilder.setEmail(faker.bothify("????##@gmail.com"));
+			employeeBuilder.setPhone(faker.phoneNumber().phoneNumber());
+			employeeBuilder.setAddress(faker.address().streetAddress());
+			employeeBuilder.setPermanent(true);
+			employeeBuilder.setStartDate(LocalDate.now());
+			employeeBuilder.setFinishDate(null);
+			employeeBuilder.setHoursPerWeek(37.5);
+			Employee newEmployee = employeeBuilder.createEmployee();
+			this.repository.save(newEmployee);	
+		}
 	}
 	
 	

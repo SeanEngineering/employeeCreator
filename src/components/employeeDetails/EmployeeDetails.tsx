@@ -10,6 +10,7 @@ const EmployeeDetails = () => {
     const contact:Array<Array<string>> = [['Email address', 'email', 'email'], ['Mobile number', 'phone', 'tel'], ['Residential address', 'address', 'text']];
     const {id} = useParams();
     const navigate = useNavigate();
+    const [recieved, setRecieved] = useState(false);
     const [data, setData] = useState<{ [key: string]: string }>({});
     const [redo, setRedo] = useState(false);
     const [ongoing, setOngoing] = useState(false);
@@ -30,13 +31,11 @@ const EmployeeDetails = () => {
       phone:"",
       address: "",
       permanent: true,
-      startDate: new Date().toISOString().slice(0,10) ,
-      finishDate: new Date().toISOString().slice(0,10),
+      startDate: "",
+      finishDate: "",
       hoursPerWeek: 40,
       fullTime: true,
     });
-    [startFinish.startYear, startFinish.startMonth, startFinish.startDay] = processDate(formData.startDate);
-    [startFinish.finishYear, startFinish.finishMonth, startFinish.finishDay] = processDate(formData.finishDate);
     
     const handleInputChange = (event) => {
       const { name, value } = event.target;
@@ -48,6 +47,7 @@ const EmployeeDetails = () => {
 
     const handleDateChange = (event) => {
         const {name, value} = event.target;
+        console.log(value);
         setStartFinish({
             ...startFinish,
             [name]: value,
@@ -92,6 +92,8 @@ const EmployeeDetails = () => {
               console.log(err);
             });
 
+        } else {
+            navigate('/employee/new');
         }
     }, [redo]);
     
@@ -108,30 +110,37 @@ const EmployeeDetails = () => {
     }
 
     const submitChanges = (e: Event) => {
-        e.preventDefault();
-        formData.startDate = recombineDate(startFinish.startYear, startFinish.startMonth, startFinish.startDay);
-        formData.finishDate = recombineDate(startFinish.finishYear, startFinish.finishMonth, startFinish.finishDay);
-        formData.fullTime = document.getElementById('fullTime')?.checked? true: false;
-        formData.permanent = document.getElementById('permanent')?.checked? true: false;
-        ongoing ? formData.finishDate = null: null;
-        console.log(formData);
-        const json = JSON.stringify(formData);
-        if (parseInt(id)){
-            axios.patch(`http://localhost:8080/employees/${id}`,json, {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-            alert('Your submission has been succesful')
-        } else {
-            axios.post(`http://localhost:8080/employees`,json, {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-            alert('You created an employee')
+        try {
+            e.preventDefault();
+            formData.startDate = recombineDate(startFinish.startYear, startFinish.startMonth, startFinish.startDay);
+            formData.finishDate = recombineDate(startFinish.finishYear, startFinish.finishMonth, startFinish.finishDay);
+            formData.fullTime = document.getElementById('fullTime')?.checked? true: false;
+            formData.permanent = document.getElementById('permanent')?.checked? true: false;
+            ongoing ? formData.finishDate = null: null;
+            console.log(formData);
+            const json = JSON.stringify(formData);
+            if (parseInt(id)){
+                axios.patch(`http://localhost:8080/employees/${id}`,json, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+            } else {
+                axios.post(`http://localhost:8080/employees`,json, {
+                    headers: {
+                        'Content-Type': 'application/json'
 
+                    }
+                }).catch((e) => console.log(e));
+    
+            }
+            setRecieved(true);
+            navigate('/');
+
+        } catch (e) {
+            throw e;
         }
+      
 
     }
 
@@ -247,6 +256,7 @@ const EmployeeDetails = () => {
                     <button onClick={(e) => {submitChanges(e)}}>Save</button>
                     <button onClick={(e) => {cancelChange(e)}}>Cancel</button>
                 </div>
+                {recieved && <p>Submitted</p>}
             </form>
         </div>
     );

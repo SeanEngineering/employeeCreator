@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.nology.employeeCreator.seeder.EmployeeSeederDTO;
 import jakarta.validation.Valid;
 
 @RestController
@@ -25,6 +26,7 @@ public class EmployeeController {
 	
 	@Autowired
 	private EmployeeService service;
+	
 	
 	@GetMapping
 	public ResponseEntity<List<Employee>> getEmployees(){
@@ -57,6 +59,12 @@ public class EmployeeController {
 		Employee employee = this.service.deleteEmployee(id);
 		return new ResponseEntity<Employee>(employee, HttpStatus.OK);
 		
+	}
+	
+	@PostMapping("/seed")
+	public ResponseEntity<List<Employee>> seedEmployees(@Valid @RequestBody EmployeeSeederDTO data) {
+		this.service.seedEmployee(data);
+		return getEmployees();
 	}
 	
 

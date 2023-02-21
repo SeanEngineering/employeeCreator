@@ -37,12 +37,12 @@ const EmployeeList = () => {
 
             </div>
             <div className={style.list}>
-                {employeeList.data?.data.map(employee => {
+                {employeeList.data?.data.map((employee: { firstName: any; middleName: any; lastName: any; permanent: any; email: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; id: string | void; }) => {
                     return (
                     <div className={style.card}>
                         <section className={style.card__details}>
                             <h5>{`${employee.firstName}${employee.middleName ? ` ${employee.middleName} ` : ' '}${employee.lastName}`}</h5>
-                            <p>{employee.permanent? 'Permanent' : 'Contract'}</p>
+                            <p>{employee.permanent? 'Permanent' : 'Contract'} </p>
                             <p>{employee.email}</p>
                         </section>
                         <section className={style.card__options}>

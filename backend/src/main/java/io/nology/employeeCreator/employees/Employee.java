@@ -97,11 +97,11 @@ public class Employee {
 	}
 
 
-	public Short getHoursPerWeek() {
+	public Double getHoursPerWeek() {
 		return hoursPerWeek;
 	}
 
-	public void setHoursPerWeek(Short hoursPerWeek) {
+	public void setHoursPerWeek(Double hoursPerWeek) {
 		this.hoursPerWeek = hoursPerWeek;
 	}
 
@@ -155,11 +155,11 @@ public class Employee {
 	 boolean fullTime;
 	
 	@Column
-	 Short hoursPerWeek;
+	 Double hoursPerWeek;
 	
 	public Employee(String firstName, String lastName, String middleName, String email,
 			String phone, String address, boolean permanent, LocalDate startDate,
-			@Nullable LocalDate finishDate, boolean fullTime, Short hoursPerWeek) {
+			@Nullable LocalDate finishDate, boolean fullTime, Double hoursPerWeek) {
 		this.firstName = firstName;
 		this.lastName =lastName;
 		this.middleName = middleName;

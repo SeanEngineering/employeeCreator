@@ -60,6 +60,11 @@
 			<artifactId>mysql</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+		    <groupId>com.github.javafaker</groupId>
+		    <artifactId>javafaker</artifactId>
+		    <version>0.15</version>
+		</dependency>
 	   <dependency>
 		    <groupId>org.testng</groupId>
 		    <artifactId>testng</artifactId>

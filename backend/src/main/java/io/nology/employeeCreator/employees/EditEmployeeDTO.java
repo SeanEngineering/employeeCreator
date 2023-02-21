@@ -73,7 +73,7 @@ public class EditEmployeeDTO {
 
 
 
-	public Short getHoursPerWeek() {
+	public Double getHoursPerWeek() {
 		return hoursPerWeek;
 	}
 
@@ -87,13 +87,13 @@ public class EditEmployeeDTO {
 	LocalDate startDate;
 	LocalDate finishDate;
 	Boolean fullTime;
-	Short hoursPerWeek;
+	Double hoursPerWeek;
 	
 	public EditEmployeeDTO() {}
 	
 	public EditEmployeeDTO(String firstName, String lastName, @Nullable String middleName,
 			String email, String phone, String address, Boolean permanent,
-			LocalDate startDate, LocalDate finishDate, Boolean fullTime, Short hoursPerWeek) {
+			LocalDate startDate, LocalDate finishDate, Boolean fullTime, Double hoursPerWeek) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.middleName = middleName;
