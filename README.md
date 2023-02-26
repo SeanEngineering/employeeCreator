@@ -14,6 +14,7 @@ This is a full stack application used to manage an employee database.
 ![Spring]
 ![Java]
 ![Apache Maven]
+![AWS]
 [![MySQL][MySQL]][MySQL-url]
 
 
@@ -90,3 +91,4 @@ To setup and run the application
 [Java]: https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white
 [TypeScript]: https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white
 [Selenium]: https://img.shields.io/badge/-selenium-%43B02A?style=for-the-badge&logo=selenium&logoColor=white
+[AWS]: https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white
