@@ -92,8 +92,6 @@ const EmployeeDetails = () => {
               console.log(err);
             });
 
-        } else {
-            navigate('/employee/new');
         }
     }, [redo]);
     

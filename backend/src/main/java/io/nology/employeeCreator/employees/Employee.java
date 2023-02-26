@@ -2,6 +2,9 @@ package io.nology.employeeCreator.employees;
 
 import java.time.LocalDate;
 
+import org.checkerframework.common.aliasing.qual.Unique;
+import org.hibernate.validator.constraints.UniqueElements;
+
 import jakarta.annotation.Nullable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -132,7 +135,7 @@ public class Employee {
 	@Column
 	 String lastName;
 	
-	@Column
+	@Column(unique = true)
 	 String email;
 	
 	@Column

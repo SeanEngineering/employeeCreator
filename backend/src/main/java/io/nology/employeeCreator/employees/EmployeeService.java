@@ -27,6 +27,10 @@ public class EmployeeService {
 		if (!checkDate(data.getStartDate(), data.getFinishDate())) {
 			throw new HttpClientErrorException(HttpStatus.BAD_REQUEST, "Start date is after finish date");
 		}
+		Optional<Employee> existingEmailOptional = repository.findByEmail(data.getEmail());
+		if (existingEmailOptional.isPresent()) {
+			throw new IllegalArgumentException("Email is already used");
+		}
 		Employee newEmployee = new Employee(data.getFirstName(), data.getLastName(), data.getMiddleName(), data.getEmail(), data.getPhone(), data.getAddress()
 				, data.isPermanent(), data.getStartDate(), data.getFinishDate(), data.isFullTime(), data.getHoursPerWeek());
 		
@@ -41,6 +45,10 @@ public class EmployeeService {
 			throw new HttpClientErrorException(HttpStatus.NOT_FOUND, "Employee Id does not exist");
 		}
 		Employee updatedEmployee = maybeEmployee.get();
+		Optional<Employee> existingEmailOptional = repository.findByEmail(data.getEmail());
+		if (existingEmailOptional.isPresent() && existingEmailOptional.get() != updatedEmployee) {
+			throw new IllegalArgumentException("Email is already used");
+		}
 		if (!data.getFirstName().isEmpty() ) updatedEmployee.setFirstName(data.getFirstName());
 		
 		if (!data.getLastName().isEmpty()) updatedEmployee.setLastName(data.getLastName());
@@ -48,6 +56,7 @@ public class EmployeeService {
 		if (!data.getMiddleName().isEmpty()) updatedEmployee.setMiddleName(data.getMiddleName());
 
 		if (!data.getEmail().isEmpty()) updatedEmployee.setEmail(data.getEmail());
+		
 		
 		if (!data.getPhone().isEmpty()) updatedEmployee.setPhone(data.getPhone());
 		

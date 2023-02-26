@@ -1,21 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="1" total="2" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-02-22T08:41:47 AEDT" name="Default suite" finished-at="2023-02-22T08:42:04 AEDT" duration-ms="17000">
+  <suite started-at="2023-02-24T14:18:32 AEDT" name="Default suite" finished-at="2023-02-24T14:18:55 AEDT" duration-ms="23812">
     <groups>
     </groups>
-    <test started-at="2023-02-22T08:41:47 AEDT" name="Default test" finished-at="2023-02-22T08:42:04 AEDT" duration-ms="17000">
+    <test started-at="2023-02-24T14:18:32 AEDT" name="Default test" finished-at="2023-02-24T14:18:55 AEDT" duration-ms="23812">
       <class name="io.nology.employeeCreator.EmployeeCreatorApplicationTests">
-        <test-method is-config="true" signature="setup()[pri:0, instance:io.nology.employeeCreator.EmployeeCreatorApplicationTests@13d9cbf5]" started-at="2023-02-22T08:41:47 AEDT" name="setup" finished-at="2023-02-22T08:41:54 AEDT" duration-ms="6666" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:io.nology.employeeCreator.EmployeeCreatorApplicationTests@c667f46]" started-at="2023-02-24T14:18:32 AEDT" name="setup" finished-at="2023-02-24T14:18:39 AEDT" duration-ms="7236" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyUserCanBeCreated()[pri:0, instance:io.nology.employeeCreator.EmployeeCreatorApplicationTests@13d9cbf5]" started-at="2023-02-22T08:41:54 AEDT" name="verifyUserCanBeCreated" finished-at="2023-02-22T08:42:04 AEDT" duration-ms="10162" status="PASS">
+        <test-method signature="verifyInputsAreNull()[pri:0, instance:io.nology.employeeCreator.EmployeeCreatorApplicationTests@c667f46]" started-at="2023-02-24T14:18:39 AEDT" name="verifyInputsAreNull" finished-at="2023-02-24T14:18:40 AEDT" duration-ms="864" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyInputsAreNull -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:io.nology.employeeCreator.EmployeeCreatorApplicationTests@c667f46]" started-at="2023-02-24T14:18:40 AEDT" name="tearDown" finished-at="2023-02-24T14:18:40 AEDT" duration-ms="118" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:io.nology.employeeCreator.EmployeeCreatorApplicationTests@c667f46]" started-at="2023-02-24T14:18:40 AEDT" name="setup" finished-at="2023-02-24T14:18:45 AEDT" duration-ms="5474" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyUserCanBeCreated()[pri:0, instance:io.nology.employeeCreator.EmployeeCreatorApplicationTests@c667f46]" started-at="2023-02-24T14:18:45 AEDT" name="verifyUserCanBeCreated" finished-at="2023-02-24T14:18:55 AEDT" duration-ms="9939" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyUserCanBeCreated -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:io.nology.employeeCreator.EmployeeCreatorApplicationTests@13d9cbf5]" started-at="2023-02-22T08:42:04 AEDT" name="tearDown" finished-at="2023-02-22T08:42:04 AEDT" duration-ms="119" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:io.nology.employeeCreator.EmployeeCreatorApplicationTests@c667f46]" started-at="2023-02-24T14:18:55 AEDT" name="tearDown" finished-at="2023-02-24T14:18:55 AEDT" duration-ms="121" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

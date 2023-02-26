@@ -92,7 +92,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">2 methods,   2 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -101,6 +101,11 @@
                       <a href="#" panel-name="suite-Default_suite" class="show-methods passed suite-Default_suite"> (show)</a> <!-- show-methods passed suite-Default_suite -->
                     </span>
                     <div class="method-list-content passed suite-Default_suite">
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="io.nology.employeeCreator.EmployeeCreatorApplicationTests" class="method navigator-link" hash-for-method="verifyInputsAreNull">verifyInputsAreNull</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Default_suite" title="io.nology.employeeCreator.EmployeeCreatorApplicationTests" class="method navigator-link" hash-for-method="verifyUserCanBeCreated">verifyUserCanBeCreated</a> <!-- method navigator-link -->
@@ -126,6 +131,13 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
+                  <a name="verifyInputsAreNull">
+                  </a> <!-- verifyInputsAreNull -->
+                  <span class="method-name">verifyInputsAreNull</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
                   <a name="verifyUserCanBeCreated">
                   </a> <!-- verifyUserCanBeCreated -->
                   <span class="method-name">verifyUserCanBeCreated</span>
@@ -136,7 +148,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">/private/var/folders/wl/ms9lqn312p74d401mwzvs99h0000gn/T/testng-eclipse--576400213/testng-customsuite.xml</span>
+            <span class="header-content">/private/var/folders/wl/ms9lqn312p74d401mwzvs99h0000gn/T/testng-eclipse--980309231/testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -145,11 +157,7 @@
 &lt;suite name=&quot;Default suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Default test&quot; verbose=&quot;2&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;io.nology.employeeCreator.EmployeeCreatorApplicationTests&quot;&gt;
-        &lt;methods&gt;
-          &lt;include name=&quot;verifyUserCanBeCreated&quot;/&gt;
-        &lt;/methods&gt;
-      &lt;/class&gt; &lt;!-- io.nology.employeeCreator.EmployeeCreatorApplicationTests --&gt;
+      &lt;class name=&quot;io.nology.employeeCreator.EmployeeCreatorApplicationTests&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Default test --&gt;
 &lt;/suite&gt; &lt;!-- Default suite --&gt;
@@ -189,11 +197,15 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(2);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'verifyUserCanBeCreated')
 data.setCell(0, 2, 'io.nology.employeeCreator.EmployeeCreatorApplicationTests')
-data.setCell(0, 3, 10162);
+data.setCell(0, 3, 9939);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'verifyInputsAreNull')
+data.setCell(1, 2, 'io.nology.employeeCreator.EmployeeCreatorApplicationTests')
+data.setCell(1, 3, 864);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
@@ -213,16 +225,9 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">1 ignored method</span>
+            <span class="header-content">0 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">io.nology.employeeCreator.EmployeeCreatorApplicationTests</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">verifyInputsAreNull</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="chronological-Default_suite" class="panel">
@@ -237,12 +242,24 @@ return data;
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">verifyUserCanBeCreated</span>
-                <span class="method-start">6676 ms</span>
+                <span class="method-name">verifyInputsAreNull</span>
+                <span class="method-start">7241 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">16849 ms</span>
+                <span class="method-start">8110 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">setup</span>
+                <span class="method-start">8229 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">verifyUserCanBeCreated</span>
+                <span class="method-start">13704 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">23648 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

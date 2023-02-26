@@ -44,20 +44,35 @@ public class EmployeeController {
 	@GetMapping("/{id}")
 	ResponseEntity<Employee> getEmployee(@PathVariable long id){
 		Optional<Employee> employee = this.service.getEmployeeById(id);
+		if (employee.isEmpty()) {
+			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+		}
 		return new ResponseEntity<Employee>(employee.get(), HttpStatus.OK);
 	}
 	
 	@PatchMapping("/{id}") 
 	public ResponseEntity<Employee> updateEmployee(@Valid @RequestBody EditEmployeeDTO data, @PathVariable long id) throws Exception {
-		Employee updatedEmployee = this.service.editEmployee(data, id);
-		return new ResponseEntity<Employee>(updatedEmployee, HttpStatus.ACCEPTED);
+		try {
+			Employee updatedEmployee = this.service.editEmployee(data, id);
+			return new ResponseEntity<Employee>(updatedEmployee, HttpStatus.ACCEPTED);
+			
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+		}
+	
 		
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Employee> deleteEmployee(@PathVariable long id){
-		Employee employee = this.service.deleteEmployee(id);
-		return new ResponseEntity<Employee>(employee, HttpStatus.OK);
+	public ResponseEntity<Employee> deleteEmployee(@PathVariable long id) throws Exception{
+		try {
+			Employee employee = this.service.deleteEmployee(id);
+			return new ResponseEntity<Employee>(employee, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+		}
+	
 		
 	}
 	
