@@ -1,5 +1,8 @@
 # About
-This is a full stack application used to manage an employee database.
+This is a full stack application used to manage an employee database. 
+The goal for this application was to implement CRUD operations for the backend, and a simple front-end UI.
+Automation testing has been added for the backend using Selenium, and the Vitest test suit was used for the front end.
+The AWS host for the backend has been implemented however as this is a testing repo, the instance has been terminated.
 
 ## Built With
 ### Front End
@@ -20,7 +23,7 @@ This is a full stack application used to manage an employee database.
 
 ### Testing
 ![Selenium]
-
+![Vitest]
 # Getting Started
 
 ### Prerequisites
@@ -47,6 +50,10 @@ To setup and run the application
 3. Run frontend application
    ```sh
    npm run dev
+   ```
+5. Run test suite in React
+   ```sh
+   npm run test
    ```
 4. Setup MySQL to your preferences and create the employees db. 
    ```sh
@@ -92,3 +99,4 @@ To setup and run the application
 [TypeScript]: https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white
 [Selenium]: https://img.shields.io/badge/-selenium-%43B02A?style=for-the-badge&logo=selenium&logoColor=white
 [AWS]: https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white
+[Vitest]: https://img.shields.io/badge/Vitest-%6E9F18.svg?style=for-the-badge&logo=Vitest&logoColor=white
